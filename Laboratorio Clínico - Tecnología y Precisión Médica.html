@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)file:///C:/Users/mausa/Desktop/Biotecnologiahospital.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio Clínico - Tecnología y Precisión Médica</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #121212;
+            color: #FFFFFF;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        /* Partículas animadas de fondo */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #FF7A00;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(18,18,18,0.9), rgba(255,122,0,0.1)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dna" patternUnits="userSpaceOnUse" width="40" height="40"><path d="M10,10 Q20,20 30,10 Q20,0 10,10 M10,30 Q20,20 30,30 Q20,40 10,30" stroke="%23FF7A00" stroke-width="1" fill="none" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dna)"/></svg>');
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #FF7A00, #FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            color: #F2F2F2;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #FF7A00, #ff9533);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255,122,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,122,0,0.5);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Secciones generales */
+        .section {
+            padding: 100px 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #FF7A00;
+        }
+        
+        /* Sección Quiénes somos */
+        .about {
+            background: linear-gradient(135deg, #1a1a1a, #121212);
+        }
+        
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #F2F2F2;
+        }
+        
+        /* Especialización */
+        .specialization {
+            background: #0f0f0f;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .card {
+            background: linear-gradient(145deg, #1f1f1f, #151515);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,122,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FF7A00, #ff9533);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255,122,0,0.2);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .card h3 {
+            color: #FF7A00;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+        
+        .card p {
+            color: #F2F2F2;
+            line-height: 1.6;
+        }
+        
+        /* Tecnología */
+        .technology {
+            background: linear-gradient(135deg, #1a1a1a, #121212);
+        }
+        
+        .tech-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .tech-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #F2F2F2;
+        }
+        
+        .tech-visual {
+            height: 400px;
+            background: linear-gradient(45deg, #1f1f1f, #151515);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .scanning-line {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, #FF7A00, transparent);
+            animation: scan 3s infinite;
+        }
+        
+        @keyframes scan {
+            0% { left: 0; }
+            100% { left: 100%; }
+        }
+        
+        /* Experiencia */
+        .experience {
+            background: #0f0f0f;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(145deg, #1f1f1f, #151515);
+            border-radius: 15px;
+            border: 1px solid rgba(255,122,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #FF7A00;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .timeline {
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #FF7A00;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            background: linear-gradient(145deg, #1f1f1f, #151515);
+            padding: 20px;
+            border-radius: 10px;
+            width: 45%;
+            border: 1px solid rgba(255,122,0,0.1);
+        }
+        
+        .timeline-year {
+            color: #FF7A00;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        /* Resultados y seguridad */
+        .security {
+            background: linear-gradient(135deg, #1a1a1a, #121212);
+        }
+        
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .security-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(145deg, #1f1f1f, #151515);
+            border-radius: 15px;
+            border: 1px solid rgba(255,122,0,0.1);
+        }
+        
+        .security-icon {
+            font-size: 2rem;
+            color: #FF7A00;
+            margin-right: 15px;
+        }
+        
+        /* Contacto */
+        .contact {
+            background: #0f0f0f;
+            padding: 100px 0;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-form {
+            background: linear-gradient(145deg, #1f1f1f, #151515);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,122,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #FF7A00;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: #121212;
+            border: 1px solid rgba(255,122,0,0.3);
+            border-radius: 8px;
+            color: #FFFFFF;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FF7A00;
+            box-shadow: 0 0 10px rgba(255,122,0,0.3);
+        }
+        
+        .contact-info {
+            padding: 40px 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: linear-gradient(145deg, #1f1f1f, #151515);
+            border-radius: 10px;
+        }
+        
+        .contact-item-icon {
+            font-size: 1.5rem;
+            color: #FF7A00;
+            margin-right: 15px;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255,122,0,0.5); }
+            to { text-shadow: 0 0 30px rgba(255,122,0,0.8); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .section-title { font-size: 2rem; }
+            .tech-content { grid-template-columns: 1fr; }
+            .contact-content { grid-template-columns: 1fr; }
+            .timeline::before { left: 20px; }
+            .timeline-item { flex-direction: column; }
+            .timeline-content { width: 100%; margin-left: 40px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Partículas de fondo -->
+    <div class="particles" id="particles"><div class="particle" style="left: 31.1845%; top: 70.1882%; animation-delay: 4.04295s; animation-duration: 5.10493s;"></div><div class="particle" style="left: 42.1355%; top: 20.0298%; animation-delay: 0.885058s; animation-duration: 4.62379s;"></div><div class="particle" style="left: 68.9869%; top: 30.7909%; animation-delay: 0.119854s; animation-duration: 6.14991s;"></div><div class="particle" style="left: 24.5449%; top: 63.0674%; animation-delay: 4.4037s; animation-duration: 6.23316s;"></div><div class="particle" style="left: 8.3507%; top: 11.0185%; animation-delay: 3.53402s; animation-duration: 7.81441s;"></div><div class="particle" style="left: 76.607%; top: 43.0881%; animation-delay: 4.26382s; animation-duration: 5.83997s;"></div><div class="particle" style="left: 95.9067%; top: 17.9727%; animation-delay: 5.83189s; animation-duration: 6.05206s;"></div><div class="particle" style="left: 2.92973%; top: 40.7348%; animation-delay: 4.07914s; animation-duration: 4.60058s;"></div><div class="particle" style="left: 80.0396%; top: 70.0964%; animation-delay: 4.04542s; animation-duration: 4.68615s;"></div><div class="particle" style="left: 60.1664%; top: 37.1069%; animation-delay: 0.552267s; animation-duration: 5.64808s;"></div><div class="particle" style="left: 47.7547%; top: 15.242%; animation-delay: 3.95002s; animation-duration: 6.00519s;"></div><div class="particle" style="left: 74.3694%; top: 32.5236%; animation-delay: 1.93764s; animation-duration: 4.49162s;"></div><div class="particle" style="left: 20.3829%; top: 31.5291%; animation-delay: 0.957834s; animation-duration: 5.36159s;"></div><div class="particle" style="left: 8.33593%; top: 4.19122%; animation-delay: 3.38752s; animation-duration: 4.41082s;"></div><div class="particle" style="left: 49.8936%; top: 74.1152%; animation-delay: 0.426729s; animation-duration: 6.76744s;"></div><div class="particle" style="left: 25.4286%; top: 42.7164%; animation-delay: 1.1862s; animation-duration: 6.57685s;"></div><div class="particle" style="left: 68.038%; top: 90.1774%; animation-delay: 2.8063s; animation-duration: 4.33661s;"></div><div class="particle" style="left: 0.173836%; top: 58.0153%; animation-delay: 1.35246s; animation-duration: 5.14609s;"></div><div class="particle" style="left: 65.6371%; top: 39.7051%; animation-delay: 5.21467s; animation-duration: 6.46884s;"></div><div class="particle" style="left: 12.8572%; top: 51.9321%; animation-delay: 2.80937s; animation-duration: 5.16364s;"></div><div class="particle" style="left: 57.1213%; top: 43.1838%; animation-delay: 3.30348s; animation-duration: 7.73275s;"></div><div class="particle" style="left: 31.872%; top: 88.6%; animation-delay: 3.55731s; animation-duration: 6.04487s;"></div><div class="particle" style="left: 45.2446%; top: 77.8695%; animation-delay: 0.518477s; animation-duration: 6.94727s;"></div><div class="particle" style="left: 24.4541%; top: 68.4161%; animation-delay: 4.7913s; animation-duration: 4.17032s;"></div><div class="particle" style="left: 42.2397%; top: 78.9176%; animation-delay: 4.15756s; animation-duration: 4.91345s;"></div><div class="particle" style="left: 76.9852%; top: 45.3068%; animation-delay: 1.52554s; animation-duration: 5.9658s;"></div><div class="particle" style="left: 49.6328%; top: 83.7736%; animation-delay: 2.32498s; animation-duration: 4.01355s;"></div><div class="particle" style="left: 75.0951%; top: 76.416%; animation-delay: 4.17914s; animation-duration: 5.55036s;"></div><div class="particle" style="left: 72.2553%; top: 5.59774%; animation-delay: 1.62631s; animation-duration: 5.31616s;"></div><div class="particle" style="left: 32.5847%; top: 36.4444%; animation-delay: 4.43398s; animation-duration: 7.59403s;"></div><div class="particle" style="left: 61.2631%; top: 87.2649%; animation-delay: 0.156949s; animation-duration: 7.30458s;"></div><div class="particle" style="left: 30.417%; top: 59.8523%; animation-delay: 0.280895s; animation-duration: 5.65298s;"></div><div class="particle" style="left: 33.5723%; top: 38.0949%; animation-delay: 2.40958s; animation-duration: 6.18576s;"></div><div class="particle" style="left: 43.0411%; top: 53.6804%; animation-delay: 1.79318s; animation-duration: 5.05051s;"></div><div class="particle" style="left: 50.8292%; top: 57.6054%; animation-delay: 5.96652s; animation-duration: 4.72508s;"></div><div class="particle" style="left: 22.0505%; top: 6.19254%; animation-delay: 2.1253s; animation-duration: 4.04431s;"></div><div class="particle" style="left: 16.153%; top: 94.211%; animation-delay: 4.73549s; animation-duration: 5.59204s;"></div><div class="particle" style="left: 14.4783%; top: 52.4946%; animation-delay: 2.44924s; animation-duration: 5.45082s;"></div><div class="particle" style="left: 7.14188%; top: 52.4286%; animation-delay: 5.94852s; animation-duration: 5.22736s;"></div><div class="particle" style="left: 52.7573%; top: 83.034%; animation-delay: 2.75929s; animation-duration: 7.48262s;"></div><div class="particle" style="left: 44.7501%; top: 86.4484%; animation-delay: 1.63125s; animation-duration: 4.17324s;"></div><div class="particle" style="left: 34.5717%; top: 37.1907%; animation-delay: 3.58519s; animation-duration: 6.30918s;"></div><div class="particle" style="left: 47.2135%; top: 95.8294%; animation-delay: 3.60137s; animation-duration: 4.66175s;"></div><div class="particle" style="left: 79.4517%; top: 32.7197%; animation-delay: 3.25793s; animation-duration: 4.83981s;"></div><div class="particle" style="left: 81.5175%; top: 33.1729%; animation-delay: 4.79268s; animation-duration: 4.68927s;"></div><div class="particle" style="left: 0.990378%; top: 62.7792%; animation-delay: 5.05554s; animation-duration: 6.95163s;"></div><div class="particle" style="left: 43.5192%; top: 31.4715%; animation-delay: 5.01353s; animation-duration: 4.58977s;"></div><div class="particle" style="left: 53.1727%; top: 44.7302%; animation-delay: 0.976393s; animation-duration: 4.52702s;"></div><div class="particle" style="left: 48.7333%; top: 5.95673%; animation-delay: 2.08808s; animation-duration: 6.06248s;"></div><div class="particle" style="left: 31.8979%; top: 29.8168%; animation-delay: 3.66791s; animation-duration: 5.51169s;"></div></div>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tecnología, precisión y ciencia al servicio del diagnóstico clínico</h1>
+            <p>Un laboratorio hospitalario de vanguardia especializado en biotecnología y biomedicina</p>
+            <a href="file:///C:/Users/mausa/Desktop/Biotecnologiahospital.html#contact" class="cta-button">Solicitar análisis</a>
+        </div>
+    </section>
+    
+    <!-- Quiénes somos -->
+    <section class="section about fade-in visible">
+        <div class="container">
+            <h2 class="section-title">Quiénes Somos</h2>
+            <div class="about-content">
+                <p>El laboratorio clínico del Hospital es una unidad altamente especializada, equipada con tecnología de última generación y gestionada por profesionales en biotecnología, biomedicina y bioquímica clínica. Nuestro propósito es brindar resultados confiables y precisos que apoyen la toma de decisiones médicas en tiempo real.</p>
+                <br>
+                <p>Fusionamos la ciencia con la innovación para garantizar procesos seguros, automatizados y trazables.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Especialización -->
+    <section class="section specialization fade-in visible">
+        <div class="container">
+            <h2 class="section-title">Áreas de Especialización</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <span class="card-icon">🔬</span>
+                    <h3>Diagnóstico molecular</h3>
+                    <p>Técnicas avanzadas de PCR, secuenciación genética y biomarcadores para detección precoz de enfermedades.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🧫</span>
+                    <h3>Microbiología clínica</h3>
+                    <p>Identificación de patógenos, pruebas de sensibilidad antimicrobiana y vigilancia epidemiológica.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🧪</span>
+                    <h3>Bioquímica clínica</h3>
+                    <p>Análisis de sangre, perfil lipídico, hepático y metabólico con sistemas automatizados de alta precisión.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🧠</span>
+                    <h3>Neurobiomarcadores</h3>
+                    <p>Evaluación de proteínas y compuestos relacionados con patologías neurológicas y degenerativas.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">🧍</span>
+                    <h3>Biotecnología aplicada</h3>
+                    <p>Validación de pruebas personalizadas y desarrollo de protocolos de diagnóstico innovadores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Tecnología -->
+    <section class="section technology fade-in visible">
+        <div class="container">
+            <h2 class="section-title">Tecnología e Innovación</h2>
+            <div class="tech-content">
+                <div class="tech-text">
+                    <p>Utilizamos sistemas automatizados, inteligencia artificial para el análisis de datos clínicos, trazabilidad por QR y resultados digitales en tiempo real. Nuestra infraestructura permite más de 500 pruebas diarias con tiempos de entrega eficientes y un margen de error mínimo.</p>
+                </div>
+                <div class="tech-visual">
+                    <div class="scanning-line"></div>
+                    <div style="text-align: center; color: #FF7A00; font-size: 1.2rem;">
+                        <div>🖥️ SISTEMAS AUTOMATIZADOS</div>
+                        <div style="margin-top: 20px;">🤖 INTELIGENCIA ARTIFICIAL</div>
+                        <div style="margin-top: 20px;">📱 RESULTADOS DIGITALES</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experiencia -->
+    <section class="section experience fade-in visible">
+        <div class="container">
+            <h2 class="section-title">Nuestra Experiencia</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">+20,000</span>
+                    <p>Muestras procesadas anualmente</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">12</span>
+                    <p>Años de trayectoria en diagnóstico biomédico</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">9</span>
+                    <p>Investigadores en biotecnología clínica</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">0.2%</span>
+                    <p>Margen de error certificado</p>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2010</div>
+                        <p>Fundación del laboratorio</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2014</div>
+                        <p>Primera implementación de diagnóstico molecular</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2019</div>
+                        <p>Automatización total de procesos bioquímicos</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2023</div>
+                        <p>Reconocimiento como unidad de innovación hospitalaria</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seguridad -->
+    <section class="section security fade-in visible">
+        <div class="container">
+            <h2 class="section-title">Resultados y Seguridad</h2>
+            <div class="security-grid">
+                <div class="security-item">
+                    <span class="security-icon">🔐</span>
+                    <div>
+                        <h4>Resultados digitales con acceso seguro</h4>
+                    </div>
+                </div>
+                <div class="security-item">
+                    <span class="security-icon">📋</span>
+                    <div>
+                        <h4>Sistema de trazabilidad por código único</h4>
+                    </div>
+                </div>
+                <div class="security-item">
+                    <span class="security-icon">✅</span>
+                    <div>
+                        <h4>Control de calidad interno y externo diario</h4>
+                    </div>
+                </div>
+                <div class="security-item">
+                    <span class="security-icon">🏆</span>
+                    <div>
+                        <h4>Cumplimiento normativo ISO 15189</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contacto -->
+    <section class="section contact fade-in" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contacto</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" name="name" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Correo electrónico</label>
+                            <input type="email" id="email" name="email" required="">
+                        </div>
+                        <div class="form-group">
+                            <label for="analysis">Tipo de análisis</label>
+                            <select id="analysis" name="analysis">
+                                <option value="">Seleccione un tipo</option>
+                                <option value="molecular">Diagnóstico molecular</option>
+                                <option value="microbiologia">Microbiología clínica</option>
+                                <option value="bioquimica">Bioquímica clínica</option>
+                                <option value="neurobiomarcadores">Neurobiomarcadores</option>
+                                <option value="biotecnologia">Biotecnología aplicada</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="cta-button" style="width: 100%;">Enviar solicitud</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📧</span>
+                        <div>
+                            <h4>Correo electrónico</h4>
+                            <p>laboratorio@hospital.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📞</span>
+                        <div>
+                            <h4>Teléfono directo</h4>
+                            <p>+52 (55) 1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-icon">📍</span>
+                        <div>
+                            <h4>Ubicación</h4>
+                            <p>Hospital Central, Piso 3, Ala Norte</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-item-icon">🌐</span>
+                        <div>
+                            <h4>Redes científicas</h4>
+                            <p>ResearchGate | LinkedIn | PubMed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Crear partículas de fondo
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Animación de aparición al hacer scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.fade-in');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                
+                if (elementTop < windowHeight * 0.8) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        // Animación de contadores
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            counters.forEach(counter => {
+                const target = counter.textContent;
+                const isPercentage = target.includes('%');
+                const numericValue = parseFloat(target.replace(/[^0-9.]/g, ''));
+                let current = 0;
+                const increment = numericValue / 50;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= numericValue) {
+                        current = numericValue;
+                        clearInterval(timer);
+                    }
+                    
+                    if (target.includes('+')) {
+                        counter.textContent = '+' + Math.floor(current).toLocaleString();
+                    } else if (isPercentage) {
+                        counter.textContent = current.toFixed(1) + '%';
+                    } else {
+                        counter.textContent = Math.floor(current);
+                    }
+                }, 50);
+            });
+        }
+        
+        // Manejar envío del formulario
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simular envío
+            const button = this.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = 'Enviando...';
+            button.style.background = '#28a745';
+            
+            setTimeout(() => {
+                button.textContent = '¡Enviado correctamente!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            createParticles();
+            animateOnScroll();
+            
+            // Observador para animar contadores cuando sean visibles
+            const statsSection = document.querySelector('.experience');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        });
+        
+        // Scroll listener
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Smooth scroll para el botón CTA
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector('#contact').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+</body></html>
